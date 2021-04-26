@@ -17,6 +17,13 @@ public class BookService {
         return books;
     }
 
+    private static void checkDetails(BookDetails details) {
+        if (details.getAuthor() == null)
+            throw new IllegalArgumentException("No author");
+        if (details.getTitle() == null)
+            throw new IllegalArgumentException("No title");
+    }
+
     public Optional<Book> getBook(int id) {
         for (Book book : books) {
             if (book.getId() == id) {
@@ -27,8 +34,7 @@ public class BookService {
     }
 
     public Book addBook(BookDetails details) {
-        if (details.getAuthor() == null || details.getTitle() == null)
-            throw new IllegalArgumentException();
+        checkDetails(details);
         int id = idGenerator.addAndGet(1);
         Book book = new Book(id, details.getAuthor(), details.getTitle());
         books.add(book);
@@ -36,8 +42,7 @@ public class BookService {
     }
 
     public Optional<Book> updateBook(int id, BookDetails details) {
-        if (details.getAuthor() == null || details.getTitle() == null)
-            throw new IllegalArgumentException();
+        checkDetails(details);
         for (int i = 0; i < books.size(); i++) {
             Book book = books.get(i);
             if (book.getId() == id) {

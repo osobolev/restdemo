@@ -1,6 +1,7 @@
 package ru.mirea.books2;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -41,5 +42,10 @@ public class BookRest {
     @DeleteMapping("/{id}")
     public void deleteBook(@PathVariable("id") int id) {
         service.deleteBook(id);
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<String> handleException(IllegalArgumentException ex) {
+        return ResponseEntity.badRequest().body(ex.getMessage());
     }
 }

@@ -1,4 +1,4 @@
-package ru.mirea.scanner;
+package ru.mirea.my_di;
 
 import org.springframework.web.bind.annotation.RestController;
 

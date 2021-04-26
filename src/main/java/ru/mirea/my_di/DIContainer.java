@@ -1,4 +1,4 @@
-package ru.mirea.scanner;
+package ru.mirea.my_di;
 
 import ru.mirea.books2.BookRest;
 

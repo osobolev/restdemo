@@ -37,7 +37,7 @@ public class BookRest {
         return service.addBook(details);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping(path = "/{id}", consumes = "application/json")
     public Book updateBook(@PathVariable("id") int id, @RequestBody BookDetails details) {
         return service.updateBook(id, details).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }

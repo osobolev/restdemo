@@ -40,7 +40,7 @@ public class BookRest {
         return book;
     }
 
-    @PutMapping("/{id}")
+    @PutMapping(path = "/{id}", consumes = "application/json")
     public Book updateBook(@PathVariable("id") int id, @RequestBody BookDetails details) {
         if (details.getAuthor() == null || details.getTitle() == null)
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);

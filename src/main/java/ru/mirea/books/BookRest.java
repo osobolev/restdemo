@@ -4,15 +4,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @RestController
 @RequestMapping(path = "/api/books", produces = "application/json")
 public class BookRest {
 
-    private final List<Book> books = new ArrayList<>();
+    private final List<Book> books = new CopyOnWriteArrayList<>();
     private final AtomicInteger idGenerator = new AtomicInteger();
 
     @GetMapping

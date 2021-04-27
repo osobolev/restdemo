@@ -1,16 +1,16 @@
 package ru.mirea.books2;
 
-import java.util.ArrayList;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import org.springframework.stereotype.Service;
 
 @Service
 public class BookService {
 
-    private final List<Book> books = new ArrayList<>();
+    private final List<Book> books = new CopyOnWriteArrayList<>();
     private final AtomicInteger idGenerator = new AtomicInteger();
 
     public List<Book> getAllBooks() {
